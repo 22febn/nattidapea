@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nattidapea/utility/my_constant.dart';
 import 'package:nattidapea/widgets/show_image.dart';
 import 'package:nattidapea/widgets/show_text.dart';
+import 'package:nattidapea/widgets/show_text_button.dart';
 
 class MyDialog {
   final BuildContext context;
@@ -13,6 +14,8 @@ class MyDialog {
   Future<void> normalDialog({
     required String title,
     required String subTitle,
+    String? label,
+    Function()? pressFunc,
   }) async {
     showDialog(
       context: context,
@@ -28,6 +31,15 @@ class MyDialog {
           ),
           subtitle: ShowText(text: subTitle),
         ),
+        actions: [
+          pressFunc == null
+              ? ShowTextButton(
+                  label: 'OK',
+                  pressFunc: () {
+                    Navigator.pop(context);
+                  })
+              : ShowTextButton(label: label!, pressFunc: pressFunc),
+        ],
       ),
     );
   }
