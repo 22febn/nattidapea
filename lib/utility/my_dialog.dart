@@ -12,6 +12,8 @@ class MyDialog {
   });
 
   Future<void> normalDialog({
+    String? label2,
+    Function()? pressFunc2,
     required String title,
     required String subTitle,
     String? label,
@@ -39,6 +41,9 @@ class MyDialog {
                     Navigator.pop(context);
                   })
               : ShowTextButton(label: label!, pressFunc: pressFunc),
+          pressFunc2 == null
+              ? const SizedBox()
+              : ShowTextButton(label: label2!, pressFunc: pressFunc2),
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nattidapea/widgets/show_progress.dart';
 import 'package:nattidapea/widgets/show_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:nattidapea/bodys/finish_job.dart';
@@ -23,17 +24,27 @@ class _MyServiceState extends State<MyService> {
     Icons.close,
     Icons.done,
   ];
-  var widgets = <Widget>[
-    const NonFinishJob(),
-    const FinishJob(),
-  ];
+  var widgets = <Widget>[];
   var bottonNavigators = <BottomNavigationBarItem>[];
   int indexBodys = 0;
 
   @override
   void initState() {
     super.initState();
+    createNavBar();
+    processFindUserLogin();
+  }
 
+  Future<void> processFindUserLogin() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    var dataLogins = preferences.getStringList('data');
+    print('dataLogins ==> $dataLogins');
+    widgets.add(NonFinishJob(dataUserLogins: dataLogins!));
+    widgets.add(FinishJob());
+    setState(() {});
+  }
+
+  void createNavBar() {
     for (var i = 0; i < titles.length; i++) {
       bottonNavigators.add(
         BottomNavigationBarItem(
@@ -51,7 +62,7 @@ class _MyServiceState extends State<MyService> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: newAppBar(context),
-      body: widgets[indexBodys],
+      body: widgets.isEmpty ? const ShowProgress() : widgets[indexBodys],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: indexBodys,
         items: bottonNavigators,
