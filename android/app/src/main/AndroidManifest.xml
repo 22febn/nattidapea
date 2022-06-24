@@ -4,6 +4,8 @@
         android:label="nattidapea"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyDLE2zSdQKbMQBjz_jhnuK3350VSr8gEUc"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
