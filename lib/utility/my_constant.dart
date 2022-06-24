@@ -13,7 +13,7 @@ class MyConstant {
       gradient: RadialGradient(
         radius: 2.0,
         center: const Alignment(-0.3, -0.3),
-        colors: [Color.fromARGB(255, 255, 255, 255), primary],
+        colors: [const Color.fromARGB(255, 255, 255, 255), primary],
       ),
     );
   }

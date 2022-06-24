@@ -7,7 +7,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:nattidapea/main.dart';
 import 'package:nattidapea/models/job_model.dart';
 import 'package:nattidapea/utility/my_constant.dart';
 import 'package:nattidapea/utility/my_dialog.dart';
